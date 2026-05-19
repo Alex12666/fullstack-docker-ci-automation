@@ -1,12 +1,12 @@
-# 1. Correção da tag do Python
 FROM python:3.9-slim
 
 WORKDIR /app
 
-# 2. Ajustado para o nome real do seu arquivo (sem o .txt se ele for apenas 'requirements')
-COPY requirements .
+# Adicione o .txt aqui na linha 7
+COPY requirements.txt .
 
-RUN pip install --no-cache-dir -r requirements
+# Adicione o .txt aqui na linha 9 também
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
