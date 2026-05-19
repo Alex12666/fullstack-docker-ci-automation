@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  # --- Nosso Backend Python ---
+  api-login:
+    build: ./backend
+    container_name: backend_container
+    ports:
+      - "5000:5000"
+    networks:
+      - rede_treino
+
+  # --- Nosso Frontend Nginx ---
+  web-front:
+    build: ./frontend
+    container_name: frontend_container
+    ports:
+      - "8080:80"
+    depends_on:
+      - api-login
+    networks:
+      - rede_treino
+
+networks:
+  rede_treino:
+    driver: bridge

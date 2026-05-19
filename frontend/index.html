@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login DevOps Lab</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login - Microserviços</h2>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Usuário" required>
+            <input type="password" id="password" placeholder="Senha" required>
+            <button type="submit">Entrar</button>
+        </form>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const message = document.getElementById('message');
+
+            try {
+                // Aqui é onde a mágica do Microserviço acontece:
+                // O Front (porta 80) chama o Back (porta 5000)
+                const response = await fetch('http://localhost:5000/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    message.style.color = "green";
+                    message.innerText = data.mensagem;
+                } else {
+                    message.style.color = "red";
+                    message.innerText = data.mensagem || "Erro ao logar";
+                }
+            } catch (err) {
+                message.innerText = "Erro: Backend fora do ar!";
+                message.style.color = "red";
+            }
+        });
+    </script>
+</body>
+</html>

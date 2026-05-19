@@ -1,0 +1,23 @@
+name: Projeto de login
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-e-testar:
+    name: Build e Testes da Aplicação
+    runs-on: ubuntu-latest
+
+
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+
+      - name: executado docker frontend
+        run:  docker buld -t  minha_front 
+
+      - name: executado docker frontend
+        run:  docker buld -t  minha_backend 
