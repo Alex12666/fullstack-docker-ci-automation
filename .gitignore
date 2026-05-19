@@ -1,0 +1,52 @@
+.terraform/
+*.tfstate
+*.tfstate.*
+terraform.tfvars
+terraform.tfstate.backup
+crash.log
+override.tf
+override.tf.json
+*.tfplan
+
+# Arquivos de Ambiente e Credenciais (MUITO IMPORTANTE!)
+.env
+.env.*
+*.env
+secret.yaml
+secrets.yaml
+*.pem
+*.key
+*.crt
+id_rsa*
+id_dsa*
+
+# Configurações de IDEs e Editores
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Diretórios de Pacotes e Dependências
+node_modules/
+vendor/
+venv/
+.pytest_cache/
+__pycache__/
+
+# Empacotamento e Imagens
+*.tar
+*.gz
+*.zip
+*.tar.gz
+*.ova
+*.vmdk
+
+# Artefatos de Build e Logs
+build/
+dist/
+target/
+out/
+*.log
+*.retry

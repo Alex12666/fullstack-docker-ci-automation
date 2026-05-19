@@ -10,14 +10,12 @@ jobs:
     name: Build e Testes da Aplicação
     runs-on: ubuntu-latest
 
-
     steps:
       - name: Checkout do repositório
         uses: actions/checkout@v4
 
+      - name: Build da imagem do Frontend
+        run: docker build -t minha_front ./frontend
 
-      - name: executado docker frontend
-        run:  docker buld -t  minha_front 
-
-      - name: executado docker frontend
-        run:  docker buld -t  minha_backend 
+      - name: Build da imagem do Backend
+        run: docker build -t minha_backend ./Backend
